@@ -1,5 +1,6 @@
 # Assumption
-Assume the first player plays yellow. (in reality first player can choose color).
+* the first player plays yellow (in reality first player can choose color).
+* The game has 6 rows and 7 columns
 
 # Installation
 `npm i`
@@ -9,6 +10,7 @@ Assume the first player plays yellow. (in reality first player can choose color)
 
 # Run
 `npm start` will start an interactive session to run commands
+
 Note that `None` in problem statement is `null` for javascript.
 
 # Optimization
