@@ -18,6 +18,7 @@ const countColors = function(gameState) {
 
 const isStateValid = function (gameState) {
   try {
+    // test if game state is well formated
     if (gameState.length !== 6) {
       throw Error(`the game state doesn't have 6 rows. It has ${gameState.length}`);
     }
@@ -27,6 +28,8 @@ const isStateValid = function (gameState) {
       }
     }
     countColors(gameState);
+
+    //check for each column from bottom up to see if there's any floating disc
     for (let j = 0; j < 7; j++) {
       let belowIsStacked = gameState[5][j] !== null;
       for (let i = 4; i >= 0; i--) {
@@ -54,7 +57,8 @@ const getCurrentPlayer = function (gameState) {
   return colorCounts.r === colorCounts.y ? "y" : "r";
 };
 
-const isConnected = function(gameState, rowStart, colStart, rowIncrement, colIncrement) {
+// helper for hasWinner iteration
+const isConnected = function (gameState, rowStart, colStart, rowIncrement, colIncrement) {
   let currentColor = gameState[rowStart][colStart];
   let counter = 1;
   for (let i = rowStart + rowIncrement, j = colStart + colIncrement;
@@ -76,24 +80,33 @@ const hasWinner = function(gameState) {
   if (!isStateValid(gameState)) return false;
   // horizontal
   for(let i = 0; i < 6; i++) {
-    if(isConnected(gameState, i, 0, 0, 1)) return true;
+    if (isConnected(gameState, i, 0, 0, 1)) {
+      return true;
+    }
   }
   // vertical
   for (let j = 0; j < 7; j++) {
-    if (isConnected(gameState, 0, j, 1, 0)) return true;
+    if (isConnected(gameState, 0, j, 1, 0)) {
+      return true;
+    }
   }
+
   //left diagonal (bottom left to upper right)
   let leftStartCoordiates = [[3, 0], [4, 0], [5, 0], [5, 1], [5, 2], [5, 3]];
   for (let index = 0; index < leftStartCoordiates.length; index++) {
     let [i, j] = leftStartCoordiates[index];
-    if (isConnected(gameState, i, j, -1, 1)) return true;
+    if (isConnected(gameState, i, j, -1, 1)) {
+      return true;
+    }
   }
 
   //right diagonal (bottom right to upper left)
   let rightStartCoordinates = [[3, 6], [4, 6], [5, 6], [5, 5], [5, 4], [5, 3]];
   for (let index = 0; index < rightStartCoordinates.length; index++) {
     let [i, j] = rightStartCoordinates[index];
-    if (isConnected(gameState, i, j, -1, -1)) return true;
+    if (isConnected(gameState, i, j, -1, -1)) {
+      return true;
+    }
   }
   return false;
 };
