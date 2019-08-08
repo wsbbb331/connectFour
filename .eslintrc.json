@@ -1,0 +1,27 @@
+{
+    "env": {
+        "commonjs": true,
+        "es6": true,
+        "mocha": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
+    "rules": {
+        "indent": [ "warn", 2 ],
+        "linebreak-style": [ "error", "unix" ],
+        "no-multiple-empty-lines": [ "error", { "max": 1 } ],
+        "no-trailing-spaces": [ "error", { "ignoreComments": true } ],
+        "no-console": "off",
+        "object-curly-spacing": [ "error", "always" ],
+        "quotes": [ "warn", "double" ],
+        "semi": [ "warn", "always" ],
+        "space-before-blocks": [ "error" ]
+    }
+}

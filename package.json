@@ -1,0 +1,28 @@
+{
+  "name": "connect_four",
+  "version": "1.0.0",
+  "description": "Connect Four",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "choma": "^1.2.1",
+    "eslint": "^5.15.1",
+    "eslint-plugin-mocha": "^5.3.0",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.0"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 100,
+    "exclude": [
+      "test/**"
+    ],
+    "reporter": [
+      "html"
+    ]
+  },
+  "scripts": {
+    "start": "node script/connectFour.js",
+    "test": "npm run lint:errors ./ && nyc mocha",
+    "lint:errors": "eslint --quiet"
+  }
+}
