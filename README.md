@@ -8,6 +8,8 @@
 # Test
 `npm test` fully randomized. 100% code coverage.
 
+Also used `eslint` to make sure formatting is good.
+
 # Run
 `npm start` will start an interactive session to run commands
 
